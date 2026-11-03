@@ -1,0 +1,3 @@
+import { Placeholder } from '@/components/ui/brand-primitives';
+import type { ProductImage } from '@/data/mock';
+export function CroppedImage({image,tint='sand',hero=false,label='Product photo',ratio='4:5'}:{image:ProductImage | undefined;tint?:string;hero?:boolean;label?:string;ratio?:string}){if(!image?.src)return <Placeholder label={label} tint={tint} ratio={ratio}/>;const {x,y,w,h}=image.crop;return <div className={`cropped-image tint-${tint}`} data-ratio={ratio}><div style={{width:`${100/w}%`,height:`${100/h}%`,left:`${-x/w*100}%`,top:`${-y/h*100}%`}}><img src={image.src} alt={image.alt} loading={hero?'eager':'lazy'} fetchPriority={hero?'high':'auto'} decoding="async" style={{objectFit:image.fit}}/></div></div>;}
