@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = ".output/public"
 
+[build.environment]
+  NODE_VERSION = "22"
+  CI = "false"
+
 [functions]
   directory = ".output/server"
 
